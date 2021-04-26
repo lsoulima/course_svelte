@@ -1,3 +1,7 @@
+<script>
+	import Nested from "./Nested.svelte";
+</script>
+
 <style>
 	p {
 		color: purple;
@@ -6,4 +10,5 @@
 	}
 </style>
 
-<p>Loubna Soulimani</p>
+<p>This is a paragraph.</p>
+<Nested />
