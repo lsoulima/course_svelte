@@ -1,11 +1,13 @@
 <script>
-	let string = `this string contains some <strong>HTML!!!</strong>`;
+	let count = 0;
+
+	const handleClick = () => {
+		count += 1;
+	};
 </script>
 
-<!-- Show Text with tags -->
-<p>{string}</p>
-
-<!-- Use the special {@html ...} tag, to interpret HTML code -->
-<p>
-	{@html string}
-</p>
+<button on:click={handleClick}>
+	clicked
+	{count}
+	{count == 1 ? 'time' : 'times'}
+</button>
