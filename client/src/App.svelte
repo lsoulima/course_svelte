@@ -1,21 +1,27 @@
 <script>
-	let count = 0;
+	let numbers = [1, 2, 3, 4];
 
-	const handleClick = () => {
-		count += 1;
-	};
-	// log the value of count whenever it changes:
-	$: console.log(`the count is ${count}`);
+	function addNumber() {
+		// Assignments to properties of arrays and objects
+		numbers[numbers.length] = numbers.length + 1;
 
-	// reactive statements
-	$: if (count >= 10) {
-		alert(`count is dangerously high!`);
-		count = 9;
+		/*
+		** Or use:
+			numbers.push(numbers.length + 1);
+			//   redundant assignment to update the result of applying array methods
+			numbers = numbers;
+		*/
+
+		/*
+		** Or use:
+		// Spread Operator
+			numbers = [...numbers, numbers.length + 1];
+
+		*/
 	}
+	$: sum = numbers.reduce((t, n) => t + n, 0);
 </script>
 
-<button on:click={handleClick}>
-	clicked
-	{count}
-	{count == 1 ? 'time' : 'times'}
-</button>
+<p>{numbers.join(' + ')} = {sum}</p>
+
+<button on:click={addNumber}> Add a number </button>
